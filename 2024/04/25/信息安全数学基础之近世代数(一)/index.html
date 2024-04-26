@@ -19,24 +19,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="The Pythagorean Theorem, says that the sum of the squares  of the sides of a right triangle equals the squares of the hypotenuse. In symbols,$$a^{2}+b^{2}&#x3D;c^{2}$$">
+  <meta name="description" content="近世代数简而言之就是群、环、域的故事，它是纠错码和密码学的重要数学基础，本文主要关于群的相关概念。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pythagorean Triples">
-<meta property="og:url" content="http://example.com/2024/04/24/Pythagorean-Triples/index.html">
+<meta property="og:title" content="信息安全数学基础之近世代数(一)">
+<meta property="og:url" content="http://example.com/2024/04/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Sliver Eagle &#39;s Blog">
-<meta property="og:description" content="The Pythagorean Theorem, says that the sum of the squares  of the sides of a right triangle equals the squares of the hypotenuse. In symbols,$$a^{2}+b^{2}&#x3D;c^{2}$$">
+<meta property="og:description" content="近世代数简而言之就是群、环、域的故事，它是纠错码和密码学的重要数学基础，本文主要关于群的相关概念。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-24T11:10:58.000Z">
-<meta property="article:modified_time" content="2024-04-24T16:53:12.926Z">
+<meta property="article:published_time" content="2024-04-25T09:48:49.000Z">
+<meta property="article:modified_time" content="2024-04-26T10:30:29.097Z">
 <meta property="article:author" content="Sliver Eagle">
-<meta property="article:tag" content="数论">
-<meta property="article:tag" content="勾股数组">
+<meta property="article:tag" content="信息安全数学基础">
+<meta property="article:tag" content="近世代数">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/04/24/Pythagorean-Triples/">
+<link rel="canonical" href="http://example.com/2024/04/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0(%E4%B8%80)/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>Pythagorean Triples | Sliver Eagle 's Blog</title>
+  <title>信息安全数学基础之近世代数(一) | Sliver Eagle 's Blog</title>
   
 
 
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
 
   </li>
   </ul>
@@ -173,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/24/Pythagorean-Triples/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0(%E4%B8%80)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/IMG_5797.PNG">
@@ -186,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pythagorean Triples
+          信息安全数学基础之近世代数(一)
         </h1>
 
         <div class="post-meta">
@@ -196,14 +196,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2024-04-24 19:10:58" itemprop="dateCreated datePublished" datetime="2024-04-24T19:10:58+08:00">2024-04-24</time>
+              <time title="创建时间：2024-04-25 17:48:49" itemprop="dateCreated datePublished" datetime="2024-04-25T17:48:49+08:00">2024-04-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-25 00:53:12" itemprop="dateModified" datetime="2024-04-25T00:53:12+08:00">2024-04-25</time>
+                <time title="修改时间：2024-04-26 18:30:29" itemprop="dateModified" datetime="2024-04-26T18:30:29+08:00">2024-04-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -211,7 +211,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">数论</span></a>
+                  <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">信息安全数学基础</span></a>
                 </span>
             </span>
 
@@ -224,8 +224,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2024/04/24/Pythagorean-Triples/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/24/Pythagorean-Triples/" itemprop="commentCount"></span>
+    <a title="valine" href="/2024/04/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0(%E4%B8%80)/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/04/25/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0(%E4%B8%80)/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -235,14 +235,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -254,13 +254,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>The Pythagorean Theorem, says that the sum of the squares  of the sides of a right triangle equals the squares of the hypotenuse. In symbols,<br>$$a^{2}+b^{2}&#x3D;c^{2}$$</p>
+        <p>近世代数简而言之就是群、环、域的故事，它是纠错码和密码学的重要数学基础，本文主要关于<em>群</em>的相关概念。</p>
 <span id="more"></span>
-<p>There are many such triangles, The most famous has sides 3, 4, 5. Here are the first few examples:<br>$$3^{2}+4^{2}&#x3D;5^{2}$$<br>$$5^{2}+12^{2}&#x3D;13^{2}$$<br>$$8^{2}+15^{2}&#x3D;17^{2}$$<br>$$28^{2}+45^{2}&#x3D;53^{2}$$</p>
-<hr>
-<p>Our first naive question is whether there are infinitely many <em>Pythagorean triples</em>. The anwser is absolutely ‘YES’.<br>If we take a Pythagorean triple $(a,b,c)$ and multiples it by some other number $d$, then we will obtain a new Pythagorean triple $(da, db, dc)$. This is because:<br>$$(da)^{2}+(db)^2&#x3D;d^{2}(a^{2}+b^{2})&#x3D;(dc)^{2}$$<br>But these new Pythagorean triples are not very interesting. So we will concentrate our attention on triples with no common factors, and we give them a name: <em>A primitive Pythagorean triple</em>. so, Is there are infinitely many <em>primitive Pythagorean triples</em>? To begin with, here are some primitive Pythagorean triples:<br>$$(3,4,5), (5,12,13), (8,15,17), (7,24,25), (20,21,29), (9,40,41)$$<br>A few conclusions can easily be drawn even from such a short list. For example, it looks like one of $a$ and $b$ is odd and the other even, and it also seems like that $c$ is always odd<br>.<br><em><strong>It’s not hard to prove the conjecture: If (a, b, c) is a primitive Pythagorean triple, then one of a and b is odd and the other even, and c is odd.</strong></em><br>First, if $a$ and $b$ are both even, then $c$ would also be even. that is<br>$$a&#x3D;2x, b&#x3D;2y, c&#x3D;\sqrt{a^{2}+b^{2}}&#x3D;2\sqrt{x^{2}+y^{2}}$$<br>so $a$, $b$ and $c$ have a common factor of 2, so the triple can not be primitive<br>.<br>Next, suppose that $a$ and $b$ are both odd, then<br>$$a&#x3D;2x+1, b&#x3D;2y+1, c^{2}&#x3D;2(2x^{2}+2x+2y^{2}+2y+1)$$<br>so $c^{2}$ is even, then $c$ must be even, because if we assume $c$ is odd $(c&#x3D;2k+1)$, which means that $c^{2}&#x3D;4(k^{2}+k)+1$, (can not even), so $c$ must be even<br>.<br>So we can suppose that $a&#x3D;2x+1, y&#x3D;2y+1, c&#x3D;2z$,we can substitute these into the equation $a^{2}+b^{2}&#x3D;c^{2}$ to get<br>$$2x^{2}+2x+2y^{2}+2y+1&#x3D;2z^{2}$$<br>this equation says that an odd number is equal to an even number, which is impossible, <strong>so a and b can not both be odd</strong>.<br>if there is a primitive Pythagorean triple (a,b,c), we’ve just checked that they cannot both be even and odd, so it must be true that one is even and the other is odd, it’s then obvious that c is odd.  </p>
-<hr>
-<p>we can always switch a and b, so let assume that a is odd and b is even. Then we can factor<br>$$a^{2}&#x3D;c^{2}-b^{2}&#x3D;(c-b)(c+b)$$<br>If you list a few examples, you find that it looks like c-b and c+b are themselves always squares and they have no common factors.<br>$$3^{2}&#x3D;5^{2}-4^{2}&#x3D;(5-4)(5+4)&#x3D;1*9$$<br>$$15^{2}&#x3D;17^{2}-8^{2}&#x3D;(17-8)(17+8)&#x3D;9*25$$<br>$$35^{2}&#x3D;37^{2}-12^{2}&#x3D;(37-12)(37+12)&#x3D;25*49$$<br>$$33^{2}&#x3D;65^{2}-56^{2}&#x3D;(65-56)(65+56)&#x3D;9*121$$<br>We can prove the second assertion as follows. suppose that d is a common factor of c-b and c+b, so d divides $(c+b)+(c-b)&#x3D;2c$ and $(c-b)-(c-b)&#x3D;2b$, thus d divides 2b and 2c. But b and c have no common factors, so d must equal 1 or 2. But d also divides $(c-b)(c+b)&#x3D;a^{2}$, and $a^{2}$ is odd, so d must be 1<br>.<br>We now know that c-b and c+b have no common factors, and their product is a square $a^{2}$. The only way that this can heppen is if c-b and c+b are themselves squares. So we can write<br>$$c+b&#x3D;s^{2}, c-b&#x3D;t^{2}, s&gt;t&gt;&#x3D;1$$<br>s and t are both odd cause c is odd and b is even. besides, s and t also have no common factors. Then<br>$$c&#x3D;\frac{s^{2}+t^{2}}{2}, b&#x3D;\frac{s^{2}-t^{2}}{2}$$<br>and then<br>$$a&#x3D;\sqrt{(c-b)(c+b)}&#x3D;st$$<br>The following theorem records our accomplishment.<br><strong>Pythagorean Triples Theorem:</strong> <em>we will get every primitive Pythagorean Triple (a,b,c) with a odd b even by using the formulas</em><br>$$a&#x3D;st,b&#x3D;\frac{s^{2}-t^{2}}{2},c&#x3D;\frac{s^{2}+t^{2}}{2}$$<br><em>where s&gt;t&gt;&#x3D;1 are chosen to be any odd integers with no common factor.</em><br>But we only shown that if (a,b,c) is a <strong>PPT</strong> with a odd, then there are odd integers s&gt;t&gt;&#x3D;1 with no common factors so that a, b, and c are given by these formulas. We still need to check that these formulas give a <strong>PPT</strong>.<br>It’s easy to get<br>$$(st)^{2}+(\frac{s^{2}-t^{2}}{2})^{2}&#x3D;(\frac{s^{2}+t^{2}}{2})^2$$<br>we also need to check that $st,\frac{s^{2}-t^{2}}{2},\frac{s^{2}+t^{2}}{2}$ have no common factors. we postpone the poof in next blog.</p>
+<h2 id="群的定义"><a href="#群的定义" class="headerlink" title="群的定义"></a>群的定义</h2><p>设三元组$(G,\cdot ,1)$中G为集合，$\cdot$为G上的二元运算，1为G中一个元，若$(G,\cdot ,1)$满足：</p>
+<ul>
+<li>G1（乘法结合律）：$a\cdot (b\cdot c)&#x3D;(a\cdot b)\cdot c ,a,b,c\in G$</li>
+<li>G2（单位元）：$1\cdot a&#x3D;a\cdot 1&#x3D;a, a\in G$</li>
+<li>G3（逆元）：$\forall a\in G,\exists a^{‘}\in G, 使得a\cdot a^{‘}&#x3D;a^{‘}\cdot a&#x3D;1$</li>
+</ul>
+<p>则称$(G,\cdot,1)$为群，简称群G，1称为群G的单位元，$a^{‘}$称为$a$的逆元.</p>
+<p>若$(G,\cdot,1)$还满足G4（交换律）:$a\cdot b&#x3D;b\cdot a, a,b\in G$，则称G为交换群<br>.<br>若$(G,\cdot,1)$仅满足G1,G2，则称G为有单位元的半群<br>.<br>若$(G,\cdot,1)$满足G1,G2,G4，则称G为由单位元的交换半群.</p>
+<p><strong>可以验证，三元组(Z,+,0)是一个交换群，其中Z为整数集; $(Q^{*},*, 1)$也是一个交换群，其中$Q^{*}$是零以外的有理数</strong>.</p>
+<h3 id="希尔密码"><a href="#希尔密码" class="headerlink" title="希尔密码"></a>希尔密码</h3><p>设$GL_{n}(R)$为n阶实数可逆方阵的集合，$\cdot$为矩阵乘法，E为单位阵，则$(GL_{n}(R),\cdot,E)$为群<br>.<br>希尔密码的加密变换为<br>$$(y_{1}y_{2}…y_{m})&#x3D;(x_{1}x_{2}…x_{m})\cdot M \ mod \ 26$$<br>其中密钥$M\in GL_{m}(Z_{26}), x_{i},y_{i}\in Z_{26}, Z_{26}&#x3D;{0,1,…,25}$<br>.<br>希尔密码的解密变换为<br>$$(y_{1}y_{2}…y_{m})\cdot M^{-1}&#x3D;(x_{1}x_{2}…x_{m}) \ mod \ 26$$<br>需要注意的是这里的变换都是在模26下进行的运算，下面补充一些数论知识.</p>
+<p><em><strong>矩阵的模n逆矩阵：</strong></em><br>对于方阵A，整数n，如果存在方阵B满足$AB \ mod \ n &#x3D; BA \ mod \ n &#x3D; E$，则称B是A的模n逆矩阵，记为$A^{-1} \ mod \ n&#x3D; B$<br>.<br>A存在模n逆矩阵的充要条件是$gcd(det \ A, n)&#x3D;1$，并且<br>$$A^{-1} \ mod \ n&#x3D;(|A|^{-1} \ mod \ n \cdot A^{*}) \ mod \ n$$<br>其中$|A|^{-1} \ mod \ n$是|A|在模n下的乘法逆元<br>.<br><em><strong>模n的乘法逆元：</strong></em><br>对于整数a,n，如果存在整数b满足$ab \ mod \ n&#x3D;1$，则称b是a模n的乘法逆元，记为$a^{-1} \ mod \ n &#x3D; b$。其中a存在模n乘法逆元的充要条件是a与n互质<br>.<br>下面是求解x的模n逆元的经典算法  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def extended_gcd(a, b):</span><br><span class="line">    if b == 0:</span><br><span class="line">        return a, 1, 0</span><br><span class="line">    else:</span><br><span class="line">        d, x, y = extended_gcd(b, a % b)</span><br><span class="line">        return d, y, x - (a // b) * y</span><br><span class="line"></span><br><span class="line">def mod_inverse(x, n):</span><br><span class="line">    d, x_inv, _ = extended_gcd(x, n)</span><br><span class="line">    if d != 1:</span><br><span class="line">        raise ValueError(&quot;Inverse does not exist&quot;)</span><br><span class="line">    return x_inv % n</span><br></pre></td></tr></table></figure>
+<h2 id="子群"><a href="#子群" class="headerlink" title="子群"></a>子群</h2><p>设$(G,\cdot ,1)$为群，A为G的子集合。若$1\in A$且$(A,\cdot,1)$构成群，则称A为G的子群，并记为$A\le G$<br>.  </p>
+<h2 id="循环群"><a href="#循环群" class="headerlink" title="循环群"></a>循环群</h2><p>若群G的每一个元都能表示成一个元素a的幂，则G称为由a生成的循环群，记作$G&#x3D;&lt; a &gt;$，a称为循环群G的生成元<br>.<br>根据元素的阶的性质，循环群$G&#x3D;&lt; a &gt;$共有两种类型：</p>
+<ul>
+<li>如果a的阶为n，即$a^{n}&#x3D;1$，那么此时$G&#x3D;&lt; a &gt;&#x3D;&lt; a,a^{2},…,a^{n-1},1 &gt;$，称G为由a生成的n阶循环群</li>
+<li>如果不存在$a^{n}&#x3D;1$，则称G为无限阶循环群</li>
+</ul>
+<h2 id="对称群"><a href="#对称群" class="headerlink" title="对称群"></a>对称群</h2><h3 id="置换"><a href="#置换" class="headerlink" title="置换"></a>置换</h3><p>$S&#x3D;{1,2,…,n}$，映射$\sigma : S\to S$是可逆的，则称$\sigma$为$S$上的置换</p>
+<h3 id="对称群的定义"><a href="#对称群的定义" class="headerlink" title="对称群的定义"></a>对称群的定义</h3><p>全体S上的置换所构成的集合记为$S_{n}$，单位元1为恒等置换，$S_{n}$中以$\sigma (i)$表示i在置换$\sigma$下的像，定义$S_{n}$中两元素$\sigma,\eta$的乘积为<br>$[ \sigma \cdot \eta ](i)&#x3D;\sigma(\eta (i))$<br>则$(S_{n},\cdot,1)$成群，群$S_{n}$称为n次对称群</p>
+<h3 id="置换密码"><a href="#置换密码" class="headerlink" title="置换密码"></a>置换密码</h3><p>置换密码中加密变换为<br>$$(y_{1} \ y_{2} \ … \ y_{m})&#x3D;(\sigma (x_{1}) \ \sigma (x_{2}) \ … \ \sigma(x_{m}))$$<br>$x_{i},y_{i} \in S&#x3D;{1,2,…,m}, \ \sigma \in S_{m}, \ S_{m}$为{1,2,…,m}上的m次对称群<br>.<br>设置换密码中$\sigma &#x3D; \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 4 &amp; 1 &amp; 2 &amp; 3 \\ \end{pmatrix} \in S_{4}$, 明文<code>MAGAZINE</code>对应的密文<code>AMAGEZIN</code>.</p>
+<h3 id="代换密码"><a href="#代换密码" class="headerlink" title="代换密码"></a>代换密码</h3><p>代换密码中加密变换为<br>$$y&#x3D;\sigma (x)$$<br>$x,y \in \sum &#x3D; {A,B,…,Z}, \sigma \in S_{ym \sum}$, $S_{ym \sum}$为$\sum$上的对称群</p>
 
     </div>
 
@@ -270,8 +287,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
-              <a href="/tags/%E5%8B%BE%E8%82%A1%E6%95%B0%E7%BB%84/" rel="tag"># 勾股数组</a>
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag"># 信息安全数学基础</a>
+              <a href="/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/" rel="tag"># 近世代数</a>
           </div>
 
         
@@ -343,6 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">群的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%8C%E5%B0%94%E5%AF%86%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">希尔密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">子群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BE%A4"><span class="nav-number">3.</span> <span class="nav-text">循环群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E7%BE%A4"><span class="nav-number">4.</span> <span class="nav-text">对称群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2"><span class="nav-number">4.1.</span> <span class="nav-text">置换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E7%BE%A4%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.2.</span> <span class="nav-text">对称群的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">置换密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">4.4.</span> <span class="nav-text">代换密码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -358,7 +376,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -371,7 +389,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -421,12 +439,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">11k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11 分钟</span>
+    <span title="站点阅读时长">10 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
