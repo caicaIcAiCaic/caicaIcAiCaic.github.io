@@ -29,17 +29,17 @@
 <meta property="og:site_name" content="Sliver Eagle &#39;s Blog">
 <meta property="og:description" content="科普Vmess和Trojan、Http是一样的，是一种网络协议。而V2ray是一个网络工具，它支持Vmess协议，同时也支持ShadowSocks和Trojan、Vless等代理通讯协议。我们可以把V2ray和Vmess的关系类比成浏览器和Http的关系，把V2ray和Clash的关系类比成Chrome和Firefox的关系">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu.png">
-<meta property="og:image" content="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu2.png">
-<meta property="og:image" content="http://scc9dbxa6.hd-bkt.clouddn.com/images/csxy.png">
-<meta property="og:image" content="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu3.png">
+<meta property="og:image" content="https://images.blog.slivereagle.top/images/yuanlitu.png">
+<meta property="og:image" content="https://images.blog.slivereagle.top/images/yuanlitu2.png">
+<meta property="og:image" content="https://images.blog.slivereagle.top/images/csxy.png">
+<meta property="og:image" content="https://images.blog.slivereagle.top/images/yuanlitu3.png">
 <meta property="article:published_time" content="2024-04-23T09:07:43.000Z">
 <meta property="article:modified_time" content="2024-04-25T10:50:43.939Z">
 <meta property="article:author" content="Sliver Eagle">
 <meta property="article:tag" content="Vmess">
 <meta property="article:tag" content="搭建节点">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu.png">
+<meta name="twitter:image" content="https://images.blog.slivereagle.top/images/yuanlitu.png">
 
 <link rel="canonical" href="http://example.com/2024/04/23/%E5%9F%BA%E4%BA%8EVmess%E5%8D%8F%E8%AE%AE%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
@@ -261,7 +261,7 @@
       
         <h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><p>Vmess和Trojan、Http是一样的，是一种网络协议。而V2ray是一个网络工具，它支持Vmess协议，同时也支持ShadowSocks和Trojan、Vless等代理通讯协议。我们可以把V2ray和Vmess的关系类比成浏览器和Http的关系，把V2ray和Clash的关系类比成Chrome和Firefox的关系</p>
 <span id="more"></span>
-<h2 id="Vmess协议概述"><a href="#Vmess协议概述" class="headerlink" title="Vmess协议概述"></a>Vmess协议概述</h2><img src="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu.png">  
+<h2 id="Vmess协议概述"><a href="#Vmess协议概述" class="headerlink" title="Vmess协议概述"></a>Vmess协议概述</h2><img src="https://images.blog.slivereagle.top/images/yuanlitu.png">  
 <p>如上图所示，当客户端V2ray监听到浏览器发出的数据后，V2ray会根据配置信息将数据封装成Vmess数据包，大致的封装过程如下：</p>
 <ol>
 <li>根据配置中的加密方式（默认为aes），生成一个随机密钥，将原始数据加密</li>
@@ -297,10 +297,10 @@
 <h3 id="打开防火墙的8388端口"><a href="#打开防火墙的8388端口" class="headerlink" title="打开防火墙的8388端口"></a>打开防火墙的8388端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ufw status</span><br><span class="line"># ufw allow 8388</span><br><span class="line">或者直接关闭防火墙</span><br><span class="line"># ufw disable</span><br></pre></td></tr></table></figure>
 <h3 id="配置客户端v2ray"><a href="#配置客户端v2ray" class="headerlink" title="配置客户端v2ray"></a>配置客户端v2ray</h3><p>这里根据服务器的配置填写即可</p>
 <h2 id="伪装与优化"><a href="#伪装与优化" class="headerlink" title="伪装与优化"></a>伪装与优化</h2><p>截至到目前，一个裸奔的Vmess+TCP的服务器就搭建完成了，但是我们还需要进一步的伪装以及提高性能  </p>
-<img src="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu2.png">  
+<img src="https://images.blog.slivereagle.top/images/yuanlitu2.png">  
 <p>注意到上述加密方式为zero，这是因为在Vmess概述中讲到的数据封装过程，最终我们得到的数据包会再次被TLS加密并封装，所以我们省去对原始数据的加密，提高性能。注意Vmess的协议头还是要加密的，在任何时候都需要加密，密钥为用户ID</p>
 <h3 id="数据的承载关系"><a href="#数据的承载关系" class="headerlink" title="数据的承载关系"></a>数据的承载关系</h3><p>数据的承载关系比较复杂，这里只进行大致介绍：<br>传输层仅有两个协议，即Tcp和Udp，如上图中所示，选择传输协议为Tcp，数据的承载关系为：Vmess-&gt;tls-&gt;tcp，而ws是基于Tcp的，如果选择ws作为传输协议，则数据的承载关系变为：Vmess-&gt;ws-&gt;tls-&gt;tcp<br>在V2ray的配置中，传输协议有很多种：  </p>
-<img src="http://scc9dbxa6.hd-bkt.clouddn.com/images/csxy.png">  
+<img src="https://images.blog.slivereagle.top/images/csxy.png">  
 <p>它们要么是基于Tcp的，要么是基于Udp的，不同的传输协议具有不同的特性，适用于不同的网络环境，有兴趣可以搜索具体的资料，一般我们搭建服务器最常用的是tcp和ws<br>上图中的伪装类型也是v2ray提供的一种服务，仅有none和http两种选择，它会为Vmess一些封装一个Http首部，使它看起来更像一个Http数据</p>
 <h2 id="搭建Vmess-tcp-ws-tls"><a href="#搭建Vmess-tcp-ws-tls" class="headerlink" title="搭建Vmess+tcp(ws)+tls"></a>搭建Vmess+tcp(ws)+tls</h2><h3 id="申请证书"><a href="#申请证书" class="headerlink" title="申请证书"></a>申请证书</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">安装acme：curl https://get.acme.sh | sh</span><br><span class="line">安装socat：apt install socat</span><br><span class="line">添加软链接：ln -s  /root/.acme.sh/acme.sh /usr/local/bin/acme.sh</span><br><span class="line">注册账号：acme.sh --register-account -m my@example.com</span><br><span class="line">开放80端口：ufw allow 80</span><br><span class="line">切换CA机构：acme.sh --set-default-ca --server letsencrypt</span><br><span class="line">申请证书： acme.sh --issue -d 你的域名 --standalone -k ec-256</span><br><span class="line">安装证书： acme.sh --installcert -d 你的域名 --ecc --key-file /usr/local/etc/v2ray/server.key --fullchain-file /usr/local/etc/v2ray/server.crt </span><br></pre></td></tr></table></figure>
 <h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>在域名提供商（如namesail）处做DNS解析</p>
@@ -309,7 +309,7 @@
 <h3 id="重新加载并启动"><a href="#重新加载并启动" class="headerlink" title="重新加载并启动"></a>重新加载并启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># systemctl daemon-reload</span><br><span class="line"># systemctl restart v2ray.service</span><br><span class="line"># systemctl status v2ray.service</span><br></pre></td></tr></table></figure>
 <h3 id="更改客户端配置"><a href="#更改客户端配置" class="headerlink" title="更改客户端配置"></a>更改客户端配置</h3><p>将客户端v2ray的服务器地址改为域名，加密方式改为zero，并选择传输层安全tls即可。<br>如果要使用ws作为传输层协议，则还需要再服务器配置文件中修改为<code>&quot;network&quot;:&quot;ws&quot;</code></p>
 <h2 id="更强的伪装之Nginx"><a href="#更强的伪装之Nginx" class="headerlink" title="更强的伪装之Nginx"></a>更强的伪装之Nginx</h2><p>上述的Vmess+tcp&#x2F;ws+tls仍然具有一定的缺陷，如果我们直接使用https访问域名的8388端口，则服务器会返回一个错误BadRequest，这是因为8388端口的Vmess只是转发请求的VPN服务，本身不提供Web服务，这种错误可能会被防火墙探测到，进而识别出服务器的Vmess服务</p>
-<h3 id="搭建伪装站点"><a href="#搭建伪装站点" class="headerlink" title="搭建伪装站点"></a>搭建伪装站点</h3><img src="http://scc9dbxa6.hd-bkt.clouddn.com/images/yuanlitu3.png">  
+<h3 id="搭建伪装站点"><a href="#搭建伪装站点" class="headerlink" title="搭建伪装站点"></a>搭建伪装站点</h3><img src="https://images.blog.slivereagle.top/images/yuanlitu3.png">  
 <p>此时我们的传输层协议必须使用ws，Nginx可以解析ws数据，并根据ws首部的路径字段转发至V2ray服务处理。若防火墙进行探测：<code>Get /index.html-&gt;tls-&gt;tcp</code>，则Nginx发现它不是ws数据，则不会把它转发到V2ray，而是自己处理并返回index.html。这也解释了为什么我们不能使用tcp而必须使用ws</p>
 <h2 id="搭建Vmess-ws-tls-Nginx"><a href="#搭建Vmess-ws-tls-Nginx" class="headerlink" title="搭建Vmess+ws+tls+Nginx"></a>搭建Vmess+ws+tls+Nginx</h2><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nginx</span><br></pre></td></tr></table></figure>
 <h3 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h3><p>位置在<code>/etc/nginx/nginx.conf</code></p>
@@ -470,6 +470,8 @@
         
 
         
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备2024089439号 </a>
+  </div>
 
 <div class="copyright">
   
@@ -563,7 +565,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : false,
       appId      : '5TAt56SbtA4AjSHtLzTTUbmH-gzGzoHsz',
       appKey     : 'wTGPs75N1mBXNHnSVpKShKxD',
-      placeholder: "(^_^)∠※ 送妳一束花",
+      placeholder: "(^_^)∠※ 花花",
       avatar     : 'monsterid',
       meta       : guest,
       pageSize   : '10' || 10,
